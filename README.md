@@ -1,16 +1,79 @@
-# React + Vite
+# Lista de tareas con ruleta
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+> Práctica 3.1: Maquetación Responsive con SASS y Vite  
+> Diseño de Interfaces. S2DAW.
 
-Currently, two official plugins are available:
+Página web de una lista de tareas con un botón de sorteo. Al pulsarlo, una "ruleta" va mostrando tareas al azar y al terminar aparece una ventana en el centro de la pantalla con la tarea elegida.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+**Web publicada:** https://github.com/CVZiMo/P3.1-Proyecto-final-responsive-Sass
 
-## React Compiler
+## Funcionalidades
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Añadir, marcar como hecha y borrar tareas.
+- Sorteo aleatorio entre las tareas pendientes (las hechas no participan).
+- Ventana modal con la tarea elegida, con opción de marcarla como hecha.
+- Diseño responsive: dos columnas en escritorio y una columna en móvil.
 
-## Expanding the Oxlint configuration
+## Tecnologías
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+- [React](https://react.dev/)
+- [Vite](https://vitejs.dev/)
+- [SASS](https://sass-lang.com/) (con `@use`)
+- Figma (diseño y sistema de diseño)
+
+## Instalación y uso
+
+```bash
+# Clonar el repositorio
+git clone https://github.com/CVZiMo/P3.1-Proyecto-final-responsive-Sass
+cd [nombre de la carpeta]
+
+# Instalar dependencias
+npm install
+
+# Servidor de desarrollo
+npm run dev
+
+# Compilar para producción (genera la carpeta docs)
+npm run build
+```
+
+## Estructura del proyecto
+
+```
+src/
+├── styles/
+│   ├── _variables.scss   # Colores, fuentes y espaciados (exportados de Figma)
+│   ├── _mixins.scss      # Mixin de botón y gestor de media queries
+│   ├── _components.scss  # Formulario, lista, ruleta y modal
+│   ├── _layout.scss      # Estructura general de la página
+│   ├── _globals.scss     # Estilos base
+│   └── main.scss         # Importa todos los parciales
+├── assets/
+├── App.jsx
+└── main.jsx
+```
+
+## Conceptos de SASS utilizados
+
+- **Variables** para colores, fuentes y tamaños comunes.
+- **Mixins**: `boton` (estilos de botón reutilizables) y `respond-to` (media queries).
+- **Mapas**: `$breakpoints` con los puntos de ruptura.
+- **Anidamiento** en los componentes.
+- **Media queries** para adaptar el diseño a móvil.
+
+## Breakpoints
+
+| Nombre | Ancho máximo |
+| ------ | ------------ |
+| small  | 599px        |
+| medium | 1199px       |
+
+## Diseño
+
+El diseño prototipo está hecho en Figma, con versión de escritorio y versión móvil: 
+https://www.figma.com/design/8KkCZWjOOjwiH0IerevtxR/tarea-de-lista-ruleta?node-id=0-1&t=sR2Po2ASLs1Kgiug-1
+
+## Autor
+
+Víctor Chen
