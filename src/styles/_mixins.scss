@@ -1,0 +1,33 @@
+@use "sass:map";
+
+$breakpoints: (
+    "small": 599px,
+    "medium": 1199px,
+);
+
+// diseño de escritorio primero, se reduce con max-width
+@mixin respond-to($nombre) {
+    $ancho: map.get($breakpoints, $nombre);
+
+    @if $ancho {
+        @media (max-width: $ancho) {
+        @content;
+        }
+    } @else {
+        @error "El breakpoint '#{$nombre}' no existe en $breakpoints";
+    }
+}
+
+@mixin boton($fondo, $texto) {
+    background-color: $fondo;
+    color: $texto;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+
+    &:hover {
+        opacity: 0.85;
+    }
+}
