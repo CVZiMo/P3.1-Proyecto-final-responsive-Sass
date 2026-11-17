@@ -1,0 +1,35 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+.contenedor {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 $espacio;
+}
+
+header {
+    padding: 2rem 0 1rem;
+
+    h1 {
+            color: $color-secundario;
+            transform: rotate(-1deg);
+        }
+}
+
+main {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 2rem;
+    padding: 1rem 0 2rem;
+
+    @include respond-to("small") {
+        grid-template-columns: 1fr;
+    }
+}
+
+footer {
+    text-align: center;
+    padding: 1.5rem;
+    font-size: 0.85rem;
+    color: $color-hecha;
+}

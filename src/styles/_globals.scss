@@ -1,4 +1,22 @@
-@use "variables" as v;
-body{
-    background-color: v.$color-background;
+@use "variables" as *;
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: $fuente;
+    background-color: $color-fondo;
+    color: $color-texto;
+}
+
+ul {
+    list-style: none;
+}
+
+input {
+    font-family: inherit;
+    font-size: 1rem;
 }

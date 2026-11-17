@@ -1,0 +1,136 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+.formulario {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: $espacio;
+
+    input {
+        flex: 1;
+        padding: 0.5rem;
+        border: 2px solid $color-borde;
+        border-radius: $radio;
+    }
+
+    button {
+        @include boton($color-secundario, white);
+    }
+
+    @include respond-to("small") {
+        flex-direction: column;
+    }
+}
+
+.lista {
+    li {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        background: white;
+        border: 1px solid $color-borde;
+        padding: 0.7rem;
+        margin-bottom: 0.5rem;
+
+        span {
+        flex: 1;
+        }
+
+        &.hecha span {
+        text-decoration: line-through;
+        color: $color-hecha;
+        }
+
+        .borrar {
+        background: none;
+        border: none;
+        color: #b33;
+        cursor: pointer;
+        font-size: 1.1rem;
+        }
+    }
+}
+
+.ruleta {
+    background: white;
+    border: 2px dashed $color-principal;
+    padding: 1.5rem;
+    text-align: center;
+    align-self: start;
+
+    .pantalla {
+        min-height: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 1rem 0;
+        font-size: 1.2rem;
+        color: $color-secundario;
+    }
+
+    button {
+        @include boton($color-principal, white);
+
+        &:disabled {
+        background: $color-borde;
+        cursor: not-allowed;
+        }
+    }
+}
+
+.fondo-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: $espacio;
+}
+
+.modal {
+    background: $color-fondo;
+    padding: 2rem;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    border-radius: $radio;
+    box-shadow: 6px 6px 0 $color-principal;
+    animation: aparecer 0.25s;
+
+    h2 {
+        margin-bottom: 1rem;
+    }
+
+    .tarea-elegida {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: $color-secundario;
+        margin-bottom: 1.5rem;
+    }
+
+    .botones {
+        display: flex;
+        gap: 0.5rem;
+        justify-content: center;
+
+        .ok {
+        @include boton($color-secundario, white);
+        }
+
+        .cerrar {
+        @include boton($color-borde, $color-texto);
+        }
+    }
+}
+
+@keyframes aparecer {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
