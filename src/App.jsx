@@ -7,6 +7,8 @@ function App() {
   const [girando, setGirando] = useState(false);
   const [vista, setVista] = useState("");
   const [ruletaAbierta, setRuletaAbierta] = useState(false);
+  const [detalleId, setDetalleId] = useState(null);
+  const [textoDetalle, setTextoDetalle] = useState("");
 
   function agregar(e) {
     e.preventDefault();
@@ -58,6 +60,16 @@ function App() {
     setRuletaAbierta(false);
   }
 
+  function abrirDetalles(tarea) {
+    setDetalleId(tarea.id);
+    setTextoDetalle(tarea.descripcion);
+  }
+
+  function cerrarDetalles() {
+    setDetalleId(null);
+    setTextoDetalle("");
+  }
+
   const hayPendientes = tareas.some((t) => !t.hecha);
 
   return (
@@ -84,17 +96,13 @@ function App() {
       <main>
         <section>
           <div className="portada">
-            <p className="etiqueta">Si no te puedes decidir, que lo decida tu suerte.</p>
+            <p className="etiqueta">Si no te puedes decidir, que lo haga tu suerte:</p>
             <h2>Apunta lo que tienes pendiente.</h2>
           </div>
 
           <form className="formulario" onSubmit={agregar}>
-            <label htmlFor="nueva-tarea">¿Qué tienes por hacer?</label>
             <div className="fila">
-              <input
-                id="nueva-tarea"
-                type="text"
-                placeholder="Escribe una nueva tarea..."
+              <input id="nueva-tarea" type="text" placeholder="Escribe una nueva tarea..."
                 value={texto}
                 onChange={(e) => setTexto(e.target.value)}
               />
