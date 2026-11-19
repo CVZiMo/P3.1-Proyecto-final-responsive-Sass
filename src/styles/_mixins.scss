@@ -22,12 +22,18 @@ $breakpoints: (
     background-color: $fondo;
     color: $texto;
     border: none;
-    padding: 0.6rem 1.2rem;
-    border-radius: 4px;
-    font-size: 1rem;
+    padding: 0.7rem 1.2rem;
+    border-radius: $radio;
+    font-size: 0.9rem;
+    font-weight: 600;
     cursor: pointer;
 
     &:hover {
-        opacity: 0.85;
+        opacity: 0.9;
+    }
+
+    &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
     }
 }
