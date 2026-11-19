@@ -7,13 +7,53 @@
     padding: 0 $espacio;
 }
 
-header {
-    padding: 2rem 0 1rem;
+.cabecera {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid $color-borde;
 
-    h1 {
-            color: $color-secundario;
-            transform: rotate(-1deg);
+    .marca {
+        font-size: 1.15rem;
+    }
+
+    .lema {
+        flex: 1;
+        font-size: 0.75rem;
+        color: $color-secundario;
+    }
+
+    .pestanas {
+        display: flex;
+        gap: 0.5rem;
+    }
+
+    .pestana {
+        padding: 0.5rem 1.2rem;
+        background: none;
+        border: 1px solid transparent;
+        border-radius: $radio;
+        color: $color-secundario;
+        font-size: 0.85rem;
+        cursor: pointer;
+
+        &.activa {
+            background: $color-superficie;
+            border-color: $color-borde;
+            color: $color-texto;
         }
+    }
+
+    @include respond-to("small") {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.5rem;
+
+        .pestanas .pestana {
+            flex: 1;
+        }
+    }
 }
 
 main {
@@ -28,8 +68,14 @@ main {
 }
 
 footer {
-    text-align: center;
-    padding: 1.5rem;
-    font-size: 0.85rem;
-    color: $color-hecha;
+    margin-top: 1rem;
+    padding: 1.5rem 0;
+    border-top: 1px solid $color-borde;
+    text-align: right;
+    font-size: 0.75rem;
+    color: $color-secundario;
+
+    @include respond-to("small") {
+        text-align: left;
+    }
 }

@@ -63,8 +63,8 @@ function App() {
   return (
     <div className="contenedor">
       <header className="cabecera">
-        <h1 className="marca">Apuestareas</h1>
-        <p className="lema">Si no te puedes decidir, que lo decida tu suerte.</p>
+        <h1 className="marca">BumbleTasks</h1>
+        <p className="lema">¡Apuesta apuesta apuesta! ¡Gana gana gana!</p>
         <nav className="pestanas">
           <button
             className={ruletaAbierta ? "pestana" : "pestana activa"}
@@ -83,14 +83,23 @@ function App() {
 
       <main>
         <section>
+          <div className="portada">
+            <p className="etiqueta">Si no te puedes decidir, que lo decida tu suerte.</p>
+            <h2>Apunta lo que tienes pendiente.</h2>
+          </div>
+
           <form className="formulario" onSubmit={agregar}>
-            <input
-              type="text"
-              placeholder="Nueva tarea..."
-              value={texto}
-              onChange={(e) => setTexto(e.target.value)}
-            />
-            <button type="submit">Añadir</button>
+            <label htmlFor="nueva-tarea">¿Qué tienes por hacer?</label>
+            <div className="fila">
+              <input
+                id="nueva-tarea"
+                type="text"
+                placeholder="Escribe una nueva tarea..."
+                value={texto}
+                onChange={(e) => setTexto(e.target.value)}
+              />
+              <button type="submit">+ Añadir tarea</button>
+            </div>
           </form>
 
           <ul className="lista">
@@ -116,12 +125,12 @@ function App() {
             {girando ? vista : "Pulsa el botón"}
           </div>
           <button onClick={sortear} disabled={!hayPendientes || girando}>
-            Sortear tarea
+            Apostar por la tarea
           </button>
         </aside>
       </main>
 
-      <footer>Práctica 3.1 - Diseño de Interfaces</footer>
+      <footer>Diseño de interfaces web · 2026</footer>
 
       {elegida && (
         <div className="fondo-modal">
