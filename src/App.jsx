@@ -6,11 +6,14 @@ function App() {
   const [elegida, setElegida] = useState(null);
   const [girando, setGirando] = useState(false);
   const [vista, setVista] = useState("");
+  const [ruletaAbierta, setRuletaAbierta] = useState(false);
 
   function agregar(e) {
     e.preventDefault();
     if (texto.trim() === "") return;
-    setTareas([...tareas, { id: Date.now(), nombre: texto.trim(), hecha: false }]);
+    setTareas([...tareas,
+      { id: Date.now(), nombre: texto.trim(), descripcion: "", hecha: false },
+    ]);
     setTexto("");
   }
 
@@ -47,12 +50,35 @@ function App() {
     setElegida(null);
   }
 
+  function abrirRuleta() {
+    setRuletaAbierta(true);
+  }
+
+  function cerrarRuleta() {
+    setRuletaAbierta(false);
+  }
+
   const hayPendientes = tareas.some((t) => !t.hecha);
 
   return (
     <div className="contenedor">
-      <header>
-        <h1>Mis tareas</h1>
+      <header className="cabecera">
+        <h1 className="marca">Apuestareas</h1>
+        <p className="lema">Si no te puedes decidir, que lo decida tu suerte.</p>
+        <nav className="pestanas">
+          <button
+            className={ruletaAbierta ? "pestana" : "pestana activa"}
+            onClick={cerrarRuleta}
+          >
+            Listado
+          </button>
+          <button
+            className={ruletaAbierta ? "pestana activa" : "pestana"}
+            onClick={abrirRuleta}
+          >
+            Ruleta
+          </button>
+        </nav>
       </header>
 
       <main>
